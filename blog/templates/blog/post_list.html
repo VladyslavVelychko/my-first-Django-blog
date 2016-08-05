@@ -7,11 +7,13 @@
             <h1><a href="">Django Vlad Blog</a></h1>
         </div>
 
+        {% for post in posts %}
         <div>
-            <p>published: 04.08.2016, 21:18</p>
-            <h2><a href="">My first post</a></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus placerat ipsum pharetra convallis. Aliquam iaculis feugiat diam eu ornare. In hac habitasse platea dictumst. Sed luctus euismod mollis. Curabitur pulvinar vitae felis id faucibus. Vivamus at sagittis neque. Quisque aliquam dui vel ultricies auctor. Curabitur quis libero eget metus vestibulum hendrerit vel vel nibh. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus ullamcorper purus enim. Etiam tempor enim id urna pulvinar hendrerit. Nulla vulputate id sem sed elementum.</p>
+            <p>published: {{ post.published_date }}</p>
+            <h1><a href="">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaksbr }}</p>
         </div>
+	{% endfor %}
 
         <div>
             <p>published: 04.08.2016, 21:20</p>
