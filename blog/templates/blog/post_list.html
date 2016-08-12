@@ -1,24 +1,13 @@
-<html>
-    <head>
-        <title>Django Vlad blog</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">Django Vlad Blog</a></h1>
-        </div>
+{% extends 'blog/base.html' %}
 
-        {% for post in posts %}
-        <div>
-            <p>published: {{ post.published_date }}</p>
-            <h1><a href="">{{ post.title }}</a></h1>
-            <p>{{ post.text|linebreaksbr }}</p>
-        </div>
+{% block content %}	
+	{% for post in posts %}
+		<div class="post">
+		    <div class="date">
+			<p>published: {{ post.published_date }}</p>
+		    </div>
+		    <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+		    <p>{{ post.text|linebreaksbr }}</p>
+		</div>
 	{% endfor %}
-
-        <div>
-            <p>published: 04.08.2016, 21:20</p>
-            <h2><a href="">My second post</a></h2>
-            <p>Phasellus sit amet lobortis nibh. Quisque urna massa, scelerisque ac massa a, maximus convallis eros. Vivamus venenatis ligula at ipsum sagittis, nec feugiat odio rhoncus. Phasellus malesuada dictum dignissim. Nulla facilisi. Aenean dolor ipsum, aliquet in massa a, efficitur mollis lectus. Proin egestas orci at dolor lacinia, et tincidunt magna sagittis. Praesent eu dui arcu. Donec ac est in purus accumsan sagittis a quis nibh. Vestibulum vel arcu consectetur, semper eros a, hendrerit turpis. Etiam sed dignissim ex, ac scelerisque ante. Ut ac lectus ipsum. Donec sit amet justo porta, gravida magna eu, lobortis risus. Etiam in magna quam. In placerat facilisis elit id malesuada.</p>
-        </div>
-    </body>
-</html>
+{% endblock %}
